@@ -15,7 +15,7 @@ This template is **preconfigured** with:
 
 ## 📦 Scripts
 
-```json
+json
 "scripts": {
   "dev": "npm-run-all --parallel dev:react dev:electron",
   "dev:react": "vite",
