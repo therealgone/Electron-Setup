@@ -54,15 +54,15 @@ This will:
 
 ## 📂 Folder Structure
 
-root/
-├── src/
-│ ├── electron/ # Electron Main Process (isolated TS config)
-│ └── renderer/ # React Frontend (Vite + Tailwind + TS)
-├── dist/ # Vite/TypeScript build output
-├── public/ # Static assets
-├── tsconfig.json # Root TS config
-├── vite.config.ts # Vite config (frontend)
-├── electron-builder.json # Electron packaging config
+-root/
+-├── src/
+-│ ├── electron/ # Electron Main Process (isolated TS config)
+-│ └── renderer/ # React Frontend (Vite + Tailwind + TS)
+-├── dist/ # Vite/TypeScript build output
+-├── public/ # Static assets
+-├── tsconfig.json # Root TS config
+-├── vite.config.ts # Vite config (frontend)
+-├── electron-builder.json # Electron packaging config
 
 text
 
