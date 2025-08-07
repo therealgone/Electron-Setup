@@ -19,17 +19,17 @@ A modern boilerplate for building cross-platform desktop apps with Electron, Rea
 ## 📦 Scripts
 
 {
-"dev": "npm-run-all --parallel dev:react dev:electron",
-"dev:react": "vite",
-"dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",
-"build": "tsc && vite build",
-"preview": "vite preview",
-"transpile:electron": "tsc --project src/electron/tsconfig.json",
-"dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",
-"dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",
-"dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64",
-"test:e2e": "playwright test",
-"test:unit": "vitest src"
+**"dev": "npm-run-all --parallel dev:react dev:electron",**
+**"dev:react": "vite",**
+**"dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",**
+**"build": "tsc && vite build",**
+**"preview": "vite preview",**
+**"transpile:electron": "tsc --project src/electron/tsconfig.json",**
+**"dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",**
+**"dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",**
+**"dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64",**
+**"test:e2e": "playwright test",**
+**"test:unit": "vitest src"**
 }
 
 text
@@ -55,14 +55,14 @@ This will:
 ## 📂 Folder Structure
 
 -root/
--├── src/
--│ ├── electron/ # Electron Main Process (isolated TS config)
--│ └── renderer/ # React Frontend (Vite + Tailwind + TS)
--├── dist/ # Vite/TypeScript build output
--├── public/ # Static assets
--├── tsconfig.json # Root TS config
--├── vite.config.ts # Vite config (frontend)
--├── electron-builder.json # Electron packaging config
+**-├── src/
+**-│ ├── electron/ # Electron Main Process (isolated TS config)**
+**-│ └── renderer/ # React Frontend (Vite + Tailwind + TS)**
+**-├── dist/ # Vite/TypeScript build output**
+**-├── public/ # Static assets**
+**-├── tsconfig.json # Root TS config**
+**-├── vite.config.ts # Vite config (frontend)**
+**-├── electron-builder.json # Electron packaging config**
 
 text
 
