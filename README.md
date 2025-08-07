@@ -18,159 +18,140 @@ A modern boilerplate for building cross-platform desktop apps with Electron, Rea
 
 ## 📦 Scripts
 
+```json
 {
-**"dev": "npm-run-all --parallel dev:react dev:electron",**
-**"dev:react": "vite",**
-**"dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",**
-**"build": "tsc && vite build",**
-**"preview": "vite preview",**
-**"transpile:electron": "tsc --project src/electron/tsconfig.json",**
-**"dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",**
-**"dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",**
-**"dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64",**
-**"test:e2e": "playwright test",**
-**"test:unit": "vitest src"**
+  "dev": "npm-run-all --parallel dev:react dev:electron",
+  "dev:react": "vite",
+  "dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",
+  "build": "tsc && vite build",
+  "preview": "vite preview",
+  "transpile:electron": "tsc --project src/electron/tsconfig.json",
+  "dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",
+  "dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",
+  "dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64",
+  "test:e2e": "playwright test",
+  "test:unit": "vitest src"
 }
-
-text
-
----
-
-## 🚀 Getting Started
-
-### 🔥 Start Development
-
+🚀 Getting Started
+🔥 Start Development
+bash
+Copy
+Edit
 npm install
 npm run dev
-
-text
-
 This will:
-- Start the Vite dev server for React (`dev:react`)
-- Transpile Electron main process TypeScript (`transpile:electron`)
-- Launch the Electron app with React HMR (`dev:electron`)
 
----
+Start the Vite dev server for React (dev:react)
 
-## 📂 Folder Structure
+Transpile Electron main process TypeScript (transpile:electron)
 
--root/
-**-├── src/
-**-│ ├── electron/ # Electron Main Process (isolated TS config)**
-**-│ └── renderer/ # React Frontend (Vite + Tailwind + TS)**
-**-├── dist/ # Vite/TypeScript build output**
-**-├── public/ # Static assets**
-**-├── tsconfig.json # Root TS config**
-**-├── vite.config.ts # Vite config (frontend)**
-**-├── electron-builder.json # Electron packaging config**
+Launch the Electron app with React HMR (dev:electron)
 
-text
+📂 Folder Structure
+php
+Copy
+Edit
+root/
+├── src/
+│   ├── electron/    # Electron Main Process (isolated TS config)
+│   └── renderer/    # React Frontend (Vite + Tailwind + TS)
+├── dist/            # Vite/TypeScript build output
+├── public/          # Static assets
+├── tsconfig.json    # Root TS config
+├── vite.config.ts   # Vite config (frontend)
+├── electron-builder.json # Electron packaging config
+🧠 ESLint Setup
+Uses @typescript-eslint for type-aware linting, with separate configs for Electron and React.
 
----
+🔧 Base Config Example
+ts
+Copy
+Edit
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      ...tseslint.configs.strictTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+]);
+✅ React-Specific Additions
+Add these packages:
 
-## 🧠 ESLint Setup
+eslint-plugin-react-x
 
-Uses **@typescript-eslint** for type-aware linting, with separate configs for Electron and React.
+eslint-plugin-react-dom
 
-**Example configuration:**
+Sample Extension:
+ts
+Copy
+Edit
+import reactX from 'eslint-plugin-react-x';
+import reactDom from 'eslint-plugin-react-dom';
 
 export default tseslint.config([
-globalIgnores(['dist']),
-{
-files: ['**/*.{ts,tsx}'],
-extends: [
-...tseslint.configs.strictTypeChecked,
-...tseslint.configs.stylisticTypeChecked,
-],
-languageOptions: {
-parserOptions: {
-project: ['./tsconfig.node.json', './tsconfig.app.json'],
-tsconfigRootDir: import.meta.dirname,
-},
-},
-},
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      reactX.configs['recommended-typescript'],
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
 ]);
+🛠 Tech Stack
+Category	Tools/Technologies
+Frontend	React, TypeScript, Tailwind CSS, Vite
+Main Process	Electron (TypeScript, separate bundle)
+Build Tools	Vite, Electron Builder, TSC
+Linting	ESLint (+ TypeScript, React Rules)
+Testing	Playwright (E2E), Vitest (unit)
+Packaging	electron-builder (Win, MacOS, Linux)
 
-text
+🧪 Testing
+bash
+Copy
+Edit
+npm run test:unit     # Unit tests with Vitest
+npm run test:e2e      # End-to-end tests with Playwright
+📦 Build for Production
+Windows:
 
-**For React-specific linting, add:**
-- `eslint-plugin-react-x`
-- `eslint-plugin-react-dom`
-
-**Sample extension:**
-
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-globalIgnores(['dist']),
-{
-files: ['**/*.{ts,tsx}'],
-extends: [
-reactX.configs['recommended-typescript'],
-reactDom.configs.recommended,
-],
-languageOptions: {
-parserOptions: {
-project: ['./tsconfig.node.json', './tsconfig.app.json'],
-tsconfigRootDir: import.meta.dirname,
-},
-},
-},
-]);
-
-text
-
----
-
-## 🛠 Tech Stack
-
-| Category         | Tools/Technologies                          |
-|------------------|--------------------------------------------|
-| Frontend         | React, TypeScript, Tailwind CSS, Vite      |
-| Main Process     | Electron (TypeScript, separate bundle)     |
-| Build Tools      | Vite, Electron Builder, TSC                |
-| Linting          | ESLint (+ TypeScript, React Rules)         |
-| Testing          | Playwright (E2E), Vitest (unit)            |
-| Packaging        | electron-builder (Win, MacOS, Linux)        |
-
----
-
-## 🧪 Testing
-
-npm run test:unit # Unit tests with Vitest
-npm run test:e2e # End-to-end tests with Playwright
-
-text
-
----
-
-## 📦 Build for Production
-
-- **Windows:**  
+bash
+Copy
+Edit
 npm run dist:win
+Mac (ARM64):
 
-text
-- **Mac (ARM64):**  
+bash
+Copy
+Edit
 npm run dist:mac
+Linux:
 
-text
-- **Linux:**  
+bash
+Copy
+Edit
 npm run dist:linux
+The outputs are ready for distribution, thanks to electron-builder.
 
-text
+💡 Why This Template?
+Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo.
+No need to set up separate boilerplates or struggle with build tools, configs, or testing — it’s all here and ready for you to scale.
 
-*The outputs are ready for distribution, thanks to electron-builder.*
-
----
-
-## 💡 Why This Template?
-
-Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo. No need to set up separate boilerplates or struggle with build tools, configs, or testing — it’s all here and ready for you to scale.
-
----
-
-## 🙏 Credits
-Jeevan Baabu Murugan
-
-Made with ❤️ by **Jeevan**
+🙏 Credits
+Made with ❤️ by Jeevan Baabu Murugan
