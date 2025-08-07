@@ -32,6 +32,8 @@ A modern boilerplate for building cross-platform desktop apps with Electron, Rea
   "test:e2e": "playwright test",
   "test:unit": "vitest src"
 }
+```
+
 🚀 Getting Started
 🔥 Start Development
 bash
@@ -48,7 +50,7 @@ Transpile Electron main process TypeScript (transpile:electron)
 Launch the Electron app with React HMR (dev:electron)
 
 📂 Folder Structure
-php
+bash
 Copy
 Edit
 root/
@@ -83,8 +85,9 @@ export default tseslint.config([
     },
   },
 ]);
+
 ✅ React-Specific Additions
-Add these packages:
+Install these packages:
 
 eslint-plugin-react-x
 
@@ -129,25 +132,22 @@ Edit
 npm run test:unit     # Unit tests with Vitest
 npm run test:e2e      # End-to-end tests with Playwright
 📦 Build for Production
-Windows:
-
+🪟 Windows:
 bash
 Copy
 Edit
 npm run dist:win
-Mac (ARM64):
-
+🍏 Mac (ARM64):
 bash
 Copy
 Edit
 npm run dist:mac
-Linux:
-
+🐧 Linux:
 bash
 Copy
 Edit
 npm run dist:linux
-The outputs are ready for distribution, thanks to electron-builder.
+⚙️ The outputs are ready for distribution, thanks to electron-builder.
 
 💡 Why This Template?
 Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo.
