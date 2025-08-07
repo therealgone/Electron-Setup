@@ -34,25 +34,28 @@ A modern boilerplate for building cross-platform desktop apps with Electron, Rea
 }
 ```
 
-🚀 Getting Started
-🔥 Start Development
-bash
-Copy
-Edit
+---
+
+## 🚀 Getting Started
+
+### 🔥 Start Development
+
+```bash
 npm install
 npm run dev
+```
+
 This will:
 
-Start the Vite dev server for React (dev:react)
+- Start the Vite dev server for React (`dev:react`)
+- Transpile Electron main process TypeScript (`transpile:electron`)
+- Launch the Electron app with React HMR (`dev:electron`)
 
-Transpile Electron main process TypeScript (transpile:electron)
+---
 
-Launch the Electron app with React HMR (dev:electron)
+## 📂 Folder Structure
 
-📂 Folder Structure
-bash
-Copy
-Edit
+```bash
 root/
 ├── src/
 │   ├── electron/    # Electron Main Process (isolated TS config)
@@ -62,13 +65,17 @@ root/
 ├── tsconfig.json    # Root TS config
 ├── vite.config.ts   # Vite config (frontend)
 ├── electron-builder.json # Electron packaging config
-🧠 ESLint Setup
-Uses @typescript-eslint for type-aware linting, with separate configs for Electron and React.
+```
 
-🔧 Base Config Example
-ts
-Copy
-Edit
+---
+
+## 🧠 ESLint Setup
+
+Uses **@typescript-eslint** for type-aware linting, with separate configs for Electron and React.
+
+### 🔧 Base Config Example
+
+```ts
 export default tseslint.config([
   globalIgnores(['dist']),
   {
@@ -85,18 +92,20 @@ export default tseslint.config([
     },
   },
 ]);
+```
 
-✅ React-Specific Additions
+---
+
+### ✅ React-Specific Additions
+
 Install these packages:
 
-eslint-plugin-react-x
+- `eslint-plugin-react-x`
+- `eslint-plugin-react-dom`
 
-eslint-plugin-react-dom
+#### Sample Extension:
 
-Sample Extension:
-ts
-Copy
-Edit
+```ts
 import reactX from 'eslint-plugin-react-x';
 import reactDom from 'eslint-plugin-react-dom';
 
@@ -116,42 +125,63 @@ export default tseslint.config([
     },
   },
 ]);
-🛠 Tech Stack
-Category	Tools/Technologies
-Frontend	React, TypeScript, Tailwind CSS, Vite
-Main Process	Electron (TypeScript, separate bundle)
-Build Tools	Vite, Electron Builder, TSC
-Linting	ESLint (+ TypeScript, React Rules)
-Testing	Playwright (E2E), Vitest (unit)
-Packaging	electron-builder (Win, MacOS, Linux)
+```
 
-🧪 Testing
-bash
-Copy
-Edit
+---
+
+## 🛠 Tech Stack
+
+| Category      | Tools/Technologies                          |
+|---------------|---------------------------------------------|
+| Frontend      | React, TypeScript, Tailwind CSS, Vite       |
+| Main Process  | Electron (TypeScript, separate bundle)      |
+| Build Tools   | Vite, Electron Builder, TSC                 |
+| Linting       | ESLint (+ TypeScript, React Rules)          |
+| Testing       | Playwright (E2E), Vitest (unit)             |
+| Packaging     | electron-builder (Win, MacOS, Linux)        |
+
+---
+
+## 🧪 Testing
+
+```bash
 npm run test:unit     # Unit tests with Vitest
 npm run test:e2e      # End-to-end tests with Playwright
-📦 Build for Production
-🪟 Windows:
-bash
-Copy
-Edit
-npm run dist:win
-🍏 Mac (ARM64):
-bash
-Copy
-Edit
-npm run dist:mac
-🐧 Linux:
-bash
-Copy
-Edit
-npm run dist:linux
-⚙️ The outputs are ready for distribution, thanks to electron-builder.
+```
 
-💡 Why This Template?
-Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo.
+---
+
+## 📦 Build for Production
+
+### 🪟 Windows
+
+```bash
+npm run dist:win
+```
+
+### 🍏 Mac (ARM64)
+
+```bash
+npm run dist:mac
+```
+
+### 🐧 Linux
+
+```bash
+npm run dist:linux
+```
+
+> ⚙️ The outputs are ready for distribution, thanks to `electron-builder`.
+
+---
+
+## 💡 Why This Template?
+
+Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo.  
 No need to set up separate boilerplates or struggle with build tools, configs, or testing — it’s all here and ready for you to scale.
 
-🙏 Credits
-Made with ❤️ by Jeevan Baabu Murugan
+---
+
+## 🙏 Credits
+
+Made with ❤️ by **Jeevan Baabu Murugan**
