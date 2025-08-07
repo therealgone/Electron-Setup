@@ -1,20 +1,22 @@
-# ⚡ Electron + React + TypeScript + Vite + Tailwind ⚡
+⚡ Electron + React + TypeScript + Vite + Tailwind Boilerplate
+A modern boilerplate for building cross-platform desktop apps with Electron, React, and TypeScript, leveraging Vite for super-fast development and Tailwind CSS for rapid UI styling.
 
-A modern boilerplate for building cross-platform desktop apps with Electron, React, and TypeScript using Vite for super-fast HMR ⚙️
+✨ Features
+Vite + React + TypeScript
 
-This template is **preconfigured** with:
-- ✅ Vite + React + TypeScript
-- ✅ Tailwind CSS
-- ✅ ESLint + Type-aware rules
-- ✅ Electron with full build pipeline (Win/Mac/Linux)
-- ✅ Separate TypeScript configs for React and Electron
-- ✅ Playwright + Vitest for testing
-- ✅ Ready-to-go build & dev scripts
+Tailwind CSS — utility-first styling
 
----
+ESLint (type-aware rules, separate for frontend and main)
 
-## 📦 Scripts
+Electron — full build pipeline (Windows, macOS, Linux)
 
+Separate TypeScript configs for Electron main process and React renderer
+
+Playwright (E2E tests) + Vitest (unit tests)
+
+Ready-to-use scripts for development, building, packaging, and testing
+
+📦 Scripts
 json
 "scripts": {
   "dev": "npm-run-all --parallel dev:react dev:electron",
@@ -31,35 +33,36 @@ json
   "test:e2e": "playwright test",
   "test:unit": "vitest src"
 }
-🔥 Development
+🚀 Getting Started
+🔥 Start Development
 bash
-Copy code
+npm install
 npm run dev
 This will:
 
-Start Vite dev server for React
+Start the Vite dev server for React (dev:react)
 
-Transpile Electron main process TypeScript
+Transpile Electron main process TypeScript (transpile:electron)
 
-Launch Electron app with HMR
+Launch the Electron app with React HMR (dev:electron)
 
 📂 Folder Structure
-php
-Copy code
+text
 root/
 ├── src/
-│   ├── electron/             # Electron Main Process (tsconfig isolated)
-│   └── renderer/             # React Frontend (Vite + Tailwind + TS)
-├── dist/                     # Vite build output
-├── public/                   # Static assets
-├── tsconfig.json             # Root TS config
-├── vite.config.ts            # Vite config for frontend
-├── electron-builder.json     # For packaging
+│   ├── electron/       # Electron Main Process (isolated TS config)
+│   └── renderer/       # React Frontend (Vite + Tailwind + TS)
+├── dist/               # Vite/TypeScript build output
+├── public/             # Static assets
+├── tsconfig.json       # Root TS config
+├── vite.config.ts      # Vite config (frontend)
+├── electron-builder.json # Electron packaging
 🧠 ESLint Setup
-Using @typescript-eslint with type-aware linting (separate for React + Electron). You can extend the configuration like this:
+Uses @typescript-eslint for type-aware linting, with different rules/configs for Electron and React.
+
+Example configuration:
 
 ts
-Copy code
 export default tseslint.config([
   globalIgnores(['dist']),
   {
@@ -76,16 +79,15 @@ export default tseslint.config([
     },
   },
 ])
-You can also use:
+Want React-specific linting? Add these plugins:
 
 eslint-plugin-react-x
 
 eslint-plugin-react-dom
 
-To enable React-specific lint rules:
+Sample extension:
 
 ts
-Copy code
 import reactX from 'eslint-plugin-react-x'
 import reactDom from 'eslint-plugin-react-dom'
 
@@ -105,28 +107,29 @@ export default tseslint.config([
     },
   },
 ])
-🛠 Tech Stack Summary
-Category	Tools Used
-Frontend	React, TypeScript, Tailwind, Vite
-Backend/Main	Electron (Main process, bundled separately)
+🛠 Tech Stack
+Category	Tools/Technologies
+Frontend	React, TypeScript, Tailwind CSS, Vite
+Main Process	Electron (TypeScript, separate bundle)
 Build Tools	Vite, Electron Builder, TSC
-Linting	ESLint with TypeScript + React plugins
+Linting	ESLint (+ TypeScript, React Rules)
 Testing	Playwright (E2E), Vitest (unit)
-Packaging	electron-builder (supports Windows, MacOS, Linux builds)
-
+Packaging	electron-builder (Win, MacOS, Linux)
 🧪 Testing
 bash
-Copy code
 npm run test:unit     # Unit tests with Vitest
-npm run test:e2e      # E2E tests with Playwright
-🚀 Build Production App
+npm run test:e2e      # End-to-end tests with Playwright
+📦 Build for Production
 Windows: npm run dist:win
 
 Mac (ARM64): npm run dist:mac
 
 Linux: npm run dist:linux
 
-💡 Why This Template?
-Whenever you want to start a new Electron app with full frontend power (React, Tailwind, TS), just clone or pull this template. It’s a solid, clean, production-ready base. You don’t have to deal with separate boilerplate for React and Electron—it’s all combined and ready to scale.
+The outputs are ready for distribution, thanks to electron-builder.
 
+💡 Why This Template?
+Whenever you want to start a new Electron app with React, Tailwind, and TypeScript, just clone this repo. No need to set up separate boilerplate for Electron and React, or struggle with build tools, configs, or testing — it’s all here and ready for you to scale.
+
+🙏 Credits
 Made with ❤️ by Jeevan
